@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sansão Tembe | Portfólio</title>
+
+  <!-- Tipografia -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0c0c0f;          /* fundo geral */
+      --card:#121219;        /* blocos/menus */
+      --txt:#e9e8ee;         /* texto claro */
+      --muted:#b5b3c3;       /* texto secundário */
+      --accent:#ff0a78;      /* rosa destaque (como no exemplo) */
+      --accent-2:#4fd1c5;    /* ciano suave para detalhes */
+      --max:1200px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--txt);font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Arial}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    /* Navbar */
+    .nav{
+      position:fixed;top:0;left:0;right:0;z-index:50;
+      display:flex;align-items:center;justify-content:space-between;
+      max-width:var(--max);margin:0 auto;padding:14px 20px;
+      background:linear-gradient(to bottom, rgba(12,12,15,.85), rgba(12,12,15,0));
+      backdrop-filter:saturate(140%) blur(6px);
+    }
+    .brand{display:flex;gap:10px;align-items:center;font-weight:700;letter-spacing:.5px}
+    .burger{
+      width:34px;height:26px;display:grid;gap:6px;cursor:pointer
+    }
+    .burger span{
+      height:3px;background:var(--accent);border-radius:2px;display:block
+    }
+
+    /* HERO */
+    .hero{
+      min-height:100svh;display:grid;place-items:center;position:relative;overflow:hidden
+    }
+    /* Circuit background (SVG embutido) + gradiente escuro */
+    .hero::before{
+      content:"";position:absolute;inset:0;
+      background:
+        radial-gradient(1200px 600px at 80% -10%, rgba(79,209,197,.18), transparent 60%),
+        radial-gradient(900px 500px at 10% 20%, rgba(255,10,120,.12), transparent 60%),
+        url("data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='1600' height='900' viewBox='0 0 1600 900'><defs><pattern id='p' width='60' height='60' patternUnits='userSpaceOnUse'><path d='M0 30h18m6 0h12m6 0h18M30 0v18m0 6v12m0 6v18' stroke='%235b5b6d' stroke-opacity='.18' stroke-width='2' fill='none'/></pattern></defs><rect width='100%' height='100%' fill='%230c0c0f'/><rect width='100%' height='100%' fill='url(%23p)'/></svg>");
+      background-size:cover;opacity:.9
+    }
+    .hero-inner{position:relative;z-index:1;max-width:var(--max);padding:120px 24px 80px}
+
+    .hello{
+      font-weight:800;letter-spacing:1.5px;margin:0 0 14px;color:var(--accent);
+      text-transform:uppercase
+    }
+    .title{
+      font-size:clamp(42px, 8vw, 96px);
+      line-height:1.05;margin:0 0 14px;font-weight:800
+    }
+    .roles{
+      font-size:clamp(14px, 2.2vw, 18px);
+      letter-spacing:2px;text-transform:uppercase;color:#d6d5de;
+      border-left:3px solid var(--accent);padding-left:12px;margin:18px 0 34px
+    }
+
+    .btn{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:16px 26px;border:2px solid #2a2a37;border-radius:14px;
+      background:linear-gradient(180deg, #1a1a25, #13131b);
+      font-weight:600;letter-spacing:.4px;transition:.2s;
+    }
+    .btn:hover{transform:translateY(-2px);border-color:#3a3a4a;box-shadow:0 8px 24px rgba(0,0,0,.35)}
+
+    /* Seções */
+    section{max-width:var(--max);padding:80px 24px;margin:0 auto}
+    .card{
+      background:linear-gradient(180deg, #14141d, #0f0f15);
+      border:1px solid #222231;border-radius:18px;padding:28px
+    }
+    .grid{display:grid;gap:18px}
+    @media (min-width:900px){ .grid{grid-template-columns:1fr 1fr 1fr} }
+
+    .muted{color:var(--muted)}
+    .kicker{color:var(--accent-2);font-weight:700;letter-spacing:.6px;text-transform:uppercase;font-size:12px}
+    .h2{font-size:clamp(26px,4vw,36px);margin:6px 0 18px}
+
+    /* Rodapé */
+    footer{padding:40px 24px;color:#9a99a8;text-align:center;border-top:1px solid #1e1e28}
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="brand">
+      <div class="burger" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </div>
+      <div>Sansão</div>
+    </div>
+    <div>
+      <a href="#about" class="muted">Sobre mim</a>&nbsp;&nbsp;&nbsp;
+      <a href="#projects" class="muted">Projetos</a>&nbsp;&nbsp;&nbsp;
+      <a href="#contact" class="muted">Contacto</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" id="top">
+    <div class="hero-inner">
+      <p class="hello">OLÁ, SEJA BEM-VINDO!</p>
+      <h1 class="title">Eu sou Sansão Tembe</h1>
+      <p class="roles">Analista Estatístico &nbsp;|&nbsp; Ciência de Dados &nbsp;|&nbsp; Business Intelligence</p>
+      <a class="btn" href="#about">SOBRE MIM ▾</a>
+    </div>
+  </header>
+
+  <!-- SOBRE -->
+  <section id="about">
+    <p class="kicker">Perfil</p>
+    <h2 class="h2">Quem eu sou</h2>
+    <div class="card">
+      <p>Sou <strong>Analista Estatístico</strong> com atuação em <strong>Data Science</strong> e <strong>Business Intelligence</strong>, focado em transformar dados operacionais em decisões — com experiência em operações portuárias (TAT, Delays, TPH) e estudos em saúde pública (Regressão, GEE, GLMM).</p>
+      <p class="muted">Ferramentas: Python, R, SQL, Power BI, Excel, Git/GitHub.</p>
+    </div>
+  </section>
+
+  <!-- PROJETOS -->
+  <section id="projects">
+    <p class="kicker">Portfólio</p>
+    <h2 class="h2">Projetos em destaque</h2>
+    <div class="grid">
+      <a class="card" href="https://github.com/sansaotembe/sansaotembe/tree/main/projetos/analise_operacional_porto" target="_blank" rel="noopener">
+        <h3>Delays Operacionais no Porto</h3>
+        <p class="muted">Análise de TAT, Delays e produtividade (TPH) com insights accionáveis.</p>
+      </a>
+      <a class="card" href="https://github.com/sansaotembe/sansaotembe/tree/main/projetos/estudo_adesao_tarv" target="_blank" rel="noopener">
+        <h3>Adesão ao TARV e Supressão Viral</h3>
+        <p class="muted">Modelos com regressão, GEE e GLMM em contexto clínico.</p>
+      </a>
+      <a class="card" href="https://github.com/sansaotembe/sansaotembe/tree/main/projetos/market_basket_analysis" target="_blank" rel="noopener">
+        <h3>Market Basket Analysis</h3>
+        <p class="muted">Regras de associação e comportamento de compra.</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contact">
+    <p class="kicker">Contacto</p>
+    <h2 class="h2">Vamos conversar</h2>
+    <div class="card">
+      <p>📫 <a href="https://linkedin.com/in/sansaotembe" target="_blank" rel="noopener">LinkedIn</a><br>
+         ✉️ <a href="mailto:sansaotembe@gmail.com">sansaotembe@gmail.com</a></p>
+    </div>
+  </section>
+
+  <footer>
+    © <span id="y"></span> Sansão Tembe · Portfólio
+  </footer>
+
+  <script>
+    // ano no rodapé e rolagem suave
+    document.getElementById('y').textContent = new Date().getFullYear();
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); }
+      });
+    });
+  </script>
+</body>
+</html>
