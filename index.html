@@ -3,177 +3,865 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sansão Tembe | Portfólio</title>
+  <title>Sansão Tembe | Portfolio</title>
 
-  <!-- Tipografia -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <!-- FONTE PRINCIPAL (podes trocar aqui) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    :root{
-      --bg:#0c0c0f;          /* fundo geral */
-      --card:#121219;        /* blocos/menus */
-      --txt:#e9e8ee;         /* texto claro */
-      --muted:#b5b3c3;       /* texto secundário */
-      --accent:#ff0a78;      /* rosa destaque (como no exemplo) */
-      --accent-2:#4fd1c5;    /* ciano suave para detalhes */
-      --max:1200px;
+    :root {
+      /* >>> CORES PRINCIPAIS – PODES TROCAR OS HEXADECIMAIS <<< */
+      --bg: #050509;
+      --bg-soft: #10101a;
+      --card: #151522;
+      --accent: #ff0a78;    /* rosa principal */
+      --accent-soft: #ff4f9e;
+      --text: #f7f7ff;
+      --muted: #a6a4b8;
+      --border: #262636;
+      --max-width: 1120px;
     }
 
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--txt);font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Arial}
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
-
-    /* Navbar */
-    .nav{
-      position:fixed;top:0;left:0;right:0;z-index:50;
-      display:flex;align-items:center;justify-content:space-between;
-      max-width:var(--max);margin:0 auto;padding:14px 20px;
-      background:linear-gradient(to bottom, rgba(12,12,15,.85), rgba(12,12,15,0));
-      backdrop-filter:saturate(140%) blur(6px);
-    }
-    .brand{display:flex;gap:10px;align-items:center;font-weight:700;letter-spacing:.5px}
-    .burger{
-      width:34px;height:26px;display:grid;gap:6px;cursor:pointer
-    }
-    .burger span{
-      height:3px;background:var(--accent);border-radius:2px;display:block
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    /* HERO */
-    .hero{
-      min-height:100svh;display:grid;place-items:center;position:relative;overflow:hidden
+    html, body {
+      height: 100%;
+      background: radial-gradient(circle at top left, #231937 0, #050509 55%);
+      color: var(--text);
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      scroll-behavior: smooth;
     }
-    /* Circuit background (SVG embutido) + gradiente escuro */
-    .hero::before{
-      content:"";position:absolute;inset:0;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* ========================= NAVBAR ========================= */
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      display: flex;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    .nav-inner {
+      pointer-events: auto;
+      width: 100%;
+      max-width: var(--max-width);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      margin-top: 6px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(10,10,20,0.9), rgba(5,5,12,0.9));
+      border: 1px solid rgba(255,255,255,0.04);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.65);
+      backdrop-filter: blur(10px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .brand-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 10px;
+      background: radial-gradient(circle at 30% 20%, #ffffff 0, #ffd9ec 9%, #ff0a78 11%, #8c043f 60%, #260014 100%);
+      box-shadow: 0 0 16px rgba(255,10,120,0.7);
+    }
+
+    .burger {
+      width: 32px;
+      height: 24px;
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .burger span {
+      height: 3px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .nav-links a {
+      padding: 6px 10px;
+      border-radius: 999px;
+      transition: 0.15s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      background: rgba(255,255,255,0.04);
+    }
+
+    @media (max-width: 720px) {
+      .burger { display: flex; }
+      .nav-links {
+        position: absolute;
+        top: 54px;
+        right: 16px;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 14px;
+        border-radius: 16px;
+        background: rgba(5,5,15,0.96);
+        border: 1px solid rgba(255,255,255,0.04);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.7);
+        opacity: 0;
+        transform: translateY(-6px);
+        pointer-events: none;
+        transition: 0.18s;
+      }
+      .nav-links.show {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+    }
+
+    /* ========================= HERO ========================= */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 20px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      /* Grelha de fundo */
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 0 0, rgba(255,10,120,0.18), transparent 55%),
+        linear-gradient(#141421 1px, transparent 1px),
+        linear-gradient(90deg, #141421 1px, transparent 1px);
+      background-size: auto, 80px 80px, 80px 80px;
+      opacity: 0.55;
+      mix-blend-mode: screen;
+    }
+
+    .hero-gradient {
+      position: absolute;
+      inset: -40%;
       background:
-        radial-gradient(1200px 600px at 80% -10%, rgba(79,209,197,.18), transparent 60%),
-        radial-gradient(900px 500px at 10% 20%, rgba(255,10,120,.12), transparent 60%),
-        url("data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='1600' height='900' viewBox='0 0 1600 900'><defs><pattern id='p' width='60' height='60' patternUnits='userSpaceOnUse'><path d='M0 30h18m6 0h12m6 0h18M30 0v18m0 6v12m0 6v18' stroke='%235b5b6d' stroke-opacity='.18' stroke-width='2' fill='none'/></pattern></defs><rect width='100%' height='100%' fill='%230c0c0f'/><rect width='100%' height='100%' fill='url(%23p)'/></svg>");
-      background-size:cover;opacity:.9
-    }
-    .hero-inner{position:relative;z-index:1;max-width:var(--max);padding:120px 24px 80px}
-
-    .hello{
-      font-weight:800;letter-spacing:1.5px;margin:0 0 14px;color:var(--accent);
-      text-transform:uppercase
-    }
-    .title{
-      font-size:clamp(42px, 8vw, 96px);
-      line-height:1.05;margin:0 0 14px;font-weight:800
-    }
-    .roles{
-      font-size:clamp(14px, 2.2vw, 18px);
-      letter-spacing:2px;text-transform:uppercase;color:#d6d5de;
-      border-left:3px solid var(--accent);padding-left:12px;margin:18px 0 34px
+        radial-gradient(circle at 0 100%, rgba(79,209,197,0.18), transparent 55%),
+        radial-gradient(circle at 100% 0, rgba(255,10,120,0.22), transparent 55%);
+      opacity: 0.75;
     }
 
-    .btn{
-      display:inline-flex;align-items:center;gap:10px;
-      padding:16px 26px;border:2px solid #2a2a37;border-radius:14px;
-      background:linear-gradient(180deg, #1a1a25, #13131b);
-      font-weight:600;letter-spacing:.4px;transition:.2s;
+    .hero-inner {
+      position: relative;
+      max-width: var(--max-width);
+      width: 100%;
+      z-index: 1;
     }
-    .btn:hover{transform:translateY(-2px);border-color:#3a3a4a;box-shadow:0 8px 24px rgba(0,0,0,.35)}
 
-    /* Seções */
-    section{max-width:var(--max);padding:80px 24px;margin:0 auto}
-    .card{
-      background:linear-gradient(180deg, #14141d, #0f0f15);
-      border:1px solid #222231;border-radius:18px;padding:28px
+    .hero-kicker {
+      font-size: 0.86rem;
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+      font-weight: 700;
+      color: var(--accent-soft);
+      margin-bottom: 10px;
     }
-    .grid{display:grid;gap:18px}
-    @media (min-width:900px){ .grid{grid-template-columns:1fr 1fr 1fr} }
 
-    .muted{color:var(--muted)}
-    .kicker{color:var(--accent-2);font-weight:700;letter-spacing:.6px;text-transform:uppercase;font-size:12px}
-    .h2{font-size:clamp(26px,4vw,36px);margin:6px 0 18px}
+    .hero-title {
+      font-size: clamp(2.6rem, 6vw, 4.6rem);
+      line-height: 1.03;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
 
-    /* Rodapé */
-    footer{padding:40px 24px;color:#9a99a8;text-align:center;border-top:1px solid #1e1e28}
+    .hero-sub {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--muted);
+      margin-bottom: 26px;
+      border-left: 3px solid var(--accent);
+      padding-left: 10px;
+    }
+
+    .hero-tagline {
+      max-width: 520px;
+      font-size: 0.98rem;
+      color: var(--muted);
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      border: 1px solid #2c2c3b;
+      background: linear-gradient(135deg, #191926, #11111b);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.6);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: 0.18s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.75);
+      border-color: #3a3a4c;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #ff5fa8);
+      color: #120613;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.05);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--muted);
+    }
+
+    .hero-layout {
+      display: grid;
+      gap: 34px;
+    }
+
+    @media (min-width: 840px) {
+      .hero-layout {
+        grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+        align-items: center;
+      }
+    }
+
+    /* Ícone / Avatar temporário */
+    .hero-avatar {
+      width: 210px;
+      height: 210px;
+      margin-inline: auto;
+      border-radius: 35px;
+      background: radial-gradient(circle at 30% 20%, #ffffff 0, #ffd9ec 9%, #ff0a78 11%, #8c043f 60%, #260014 100%);
+      box-shadow:
+        0 0 45px rgba(255,10,120,0.9),
+        0 0 140px rgba(255,10,120,0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-avatar-inner {
+      width: 64px;
+      height: 64px;
+      border-radius: 999px;
+      border: 3px solid rgba(255,255,255,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.2rem;
+      background: rgba(0,0,0,0.65);
+      color: #ffffff;
+    }
+
+    .hero-avatar-label {
+      position: absolute;
+      bottom: 16px;
+      right: 18px;
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(5,5,10,0.8);
+      border: 1px solid rgba(255,255,255,0.16);
+      color: #f5f5ff;
+    }
+
+    /* ========================= SEÇÕES GERAIS ========================= */
+
+    section {
+      padding: 60px 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .section-inner {
+      width: 100%;
+      max-width: var(--max-width);
+    }
+
+    .section-kicker {
+      font-size: 0.82rem;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      color: var(--accent-soft);
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .section-title {
+      font-size: 1.7rem;
+      margin-bottom: 20px;
+    }
+
+    .section-grid-2 {
+      display: grid;
+      gap: 20px;
+    }
+
+    @media (min-width: 900px) {
+      .section-grid-2 {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+        align-items: flex-start;
+      }
+    }
+
+    .card {
+      background: radial-gradient(circle at top left, #25253a 0, #141421 40%, #0b0b12 100%);
+      border-radius: 20px;
+      padding: 22px 24px;
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.55);
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* ========================= ABOUT / SKILLS ========================= */
+
+    .about-list {
+      list-style: none;
+      margin-top: 16px;
+      display: grid;
+      gap: 8px;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    .about-list span {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .skill-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .chip {
+      font-size: 0.8rem;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(10,10,20,0.8);
+      color: var(--muted);
+    }
+
+    .skill-bar {
+      margin-top: 14px;
+    }
+
+    .skill-bar-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .skill-bar-track {
+      width: 100%;
+      height: 6px;
+      border-radius: 999px;
+      background: #232332;
+      overflow: hidden;
+    }
+
+    .skill-bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-soft));
+    }
+
+    /* ========================= EXPERIÊNCIA / TIMELINE ========================= */
+
+    .timeline {
+      border-left: 2px solid rgba(255,255,255,0.06);
+      margin-left: 10px;
+      padding-left: 18px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 4px;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -30px;
+      top: 4px;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 10px rgba(255,10,120,0.8);
+    }
+
+    .timeline-title {
+      font-size: 0.98rem;
+      font-weight: 600;
+    }
+
+    .timeline-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    /* ========================= PROJECTS ========================= */
+
+    .projects-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    @media (min-width: 900px) {
+      .projects-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: 0.18s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 35px rgba(0,0,0,0.7);
+    }
+
+    .project-pill {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--accent-soft);
+      margin-bottom: 8px;
+    }
+
+    .project-title {
+      font-size: 0.98rem;
+      margin-bottom: 6px;
+    }
+
+    .project-desc {
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      margin-top: 10px;
+      color: var(--accent-soft);
+    }
+
+    /* ========================= CONTACT ========================= */
+
+    .contact-row {
+      display: grid;
+      gap: 18px;
+    }
+
+    @media (min-width: 780px) {
+      .contact-row {
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      }
+    }
+
+    .contact-item {
+      font-size: 0.95rem;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .contact-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--accent-soft);
+    }
+
+    /* ========================= FOOTER ========================= */
+
+    footer {
+      padding: 26px 20px 34px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      margin-top: 30px;
+      background: #050509;
+    }
+
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav class="nav">
-    <div class="brand">
-      <div class="burger" aria-label="Abrir menu">
+  <!-- =========================================================
+       NAVBAR
+       - Para mudar os links, edita os href="#id-da-secao" ou os textos
+    ========================================================== -->
+  <header class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="brand-icon"></div>
+        <span>Sansão</span>
+      </div>
+
+      <div class="burger" id="burger">
         <span></span><span></span><span></span>
       </div>
-      <div>Sansão</div>
-    </div>
-    <div>
-      <a href="#about" class="muted">Sobre mim</a>&nbsp;&nbsp;&nbsp;
-      <a href="#projects" class="muted">Projetos</a>&nbsp;&nbsp;&nbsp;
-      <a href="#contact" class="muted">Contacto</a>
-    </div>
-  </nav>
 
-  <!-- HERO -->
-  <header class="hero" id="top">
-    <div class="hero-inner">
-      <p class="hello">OLÁ, SEJA BEM-VINDO!</p>
-      <h1 class="title">Eu sou Sansão Tembe</h1>
-      <p class="roles">Analista Estatístico &nbsp;|&nbsp; Ciência de Dados &nbsp;|&nbsp; Business Intelligence</p>
-      <a class="btn" href="#about">SOBRE MIM ▾</a>
+      <nav class="nav-links" id="nav-links">
+        <a href="#about">Sobre mim</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experiência</a>
+        <a href="#projects">Projetos</a>
+        <a href="#contact">Contacto</a>
+      </nav>
     </div>
   </header>
 
-  <!-- SOBRE -->
+  <!-- =========================================================
+       HERO
+       - Substitui textos aqui para personalizar o cabeçalho
+    ========================================================== -->
+  <section class="hero" id="top">
+    <div class="hero-gradient"></div>
+
+    <div class="hero-inner hero-layout">
+      <div>
+        <p class="hero-kicker">OLÁ, SEJA BEM-VINDO!</p>
+        <h1 class="hero-title">Eu sou Sansão Tembe</h1>
+
+        <!-- FRASE EM INGLÊS, CONFORME PEDISTE -->
+        <p class="hero-sub">
+          Statistical Analyst &nbsp;|&nbsp; Data Science &nbsp;|&nbsp; Business Intelligence
+        </p>
+
+        <p class="hero-tagline">
+          I work with operational and analytical data to transform complex information into clear, actionable insights — combining statistical thinking, data science techniques and business intelligence.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#about">SOBRE MIM ▾</a>
+          <a class="btn btn-ghost" href="#projects">VER PROJETOS</a>
+        </div>
+      </div>
+
+      <!-- AVATAR TEMPORÁRIO: QUANDO TIVER FOTO, PODES SUBSTITUIR POR <img> -->
+      <div class="hero-avatar">
+        <div class="hero-avatar-inner">
+          <!-- INICIAIS DO NOME -->
+          ST
+        </div>
+        <div class="hero-avatar-label">Data & Stats</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SOBRE MIM / PERFIL
+       - Textos totalmente editáveis
+    ========================================================== -->
   <section id="about">
-    <p class="kicker">Perfil</p>
-    <h2 class="h2">Quem eu sou</h2>
-    <div class="card">
-      <p>Sou <strong>Analista Estatístico</strong> com atuação em <strong>Data Science</strong> e <strong>Business Intelligence</strong>, focado em transformar dados operacionais em decisões — com experiência em operações portuárias (TAT, Delays, TPH) e estudos em saúde pública (Regressão, GEE, GLMM).</p>
-      <p class="muted">Ferramentas: Python, R, SQL, Power BI, Excel, Git/GitHub.</p>
+    <div class="section-inner section-grid-2">
+      <div>
+        <p class="section-kicker">Sobre</p>
+        <h2 class="section-title">Quem sou</h2>
+
+        <div class="card">
+          <p class="muted">
+            Sou <strong>Analista Estatístico</strong> com foco em <strong>Data Science</strong> e <strong>Business Intelligence</strong>, actuando na análise de dados operacionais, eficiência de processos e suporte à decisão.
+            Tenho experiência com dados de operações portuárias, saúde pública e ambientes corporativos, sempre com o objectivo de traduzir números em decisões estratégicas.
+          </p>
+
+          <ul class="about-list">
+            <li><span>Áreas de interesse:</span> modelagem estatística, dados longitudinais, optimização de processos, storytelling com dados.</li>
+            <li><span>Ferramentas:</span> R, Python, SQL, Power BI, Excel, Git & GitHub.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="skills">
+        <p class="section-kicker">Skills</p>
+        <h2 class="section-title">Tecnologias & ferramentas</h2>
+
+        <div class="card">
+          <p class="muted">Algumas das ferramentas e tecnologias com que trabalho no dia a dia:</p>
+
+          <div class="skill-chips">
+            <span class="chip">R · tidyverse</span>
+            <span class="chip">Python · pandas</span>
+            <span class="chip">SQL · PostgreSQL</span>
+            <span class="chip">Power BI</span>
+            <span class="chip">Excel avançado</span>
+            <span class="chip">Git & GitHub</span>
+          </div>
+
+          <!-- BARRAS DE SKILL – PODES AJUSTAR AS % NO width -->
+          <div class="skill-bar">
+            <div class="skill-bar-label">
+              <span>Estatística aplicada</span><span>90%</span>
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" style="width: 90%;"></div>
+            </div>
+          </div>
+
+          <div class="skill-bar">
+            <div class="skill-bar-label">
+              <span>Data analysis (R / Python)</span><span>85%</span>
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" style="width: 85%;"></div>
+            </div>
+          </div>
+
+          <div class="skill-bar">
+            <div class="skill-bar-label">
+              <span>SQL & BI</span><span>80%</span>
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" style="width: 80%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- PROJETOS -->
+  <!-- =========================================================
+       EXPERIÊNCIA / TIMELINE
+       - Ajusta cada item da timeline conforme tua história
+    ========================================================== -->
+  <section id="experience">
+    <div class="section-inner section-grid-2">
+      <div>
+        <p class="section-kicker">Resumo</p>
+        <h2 class="section-title">Minhas credenciais</h2>
+
+        <div class="card">
+          <div class="timeline">
+            <!-- ITEM 1 -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-title">Statistical Analyst · Port Operations</div>
+              <div class="timeline-meta">Porto de Maputo · Actual</div>
+              <p class="muted">
+                Análise de dados operacionais, acompanhamento de indicadores de eficiência (TAT, Delays, TPH), construção de relatórios e dashboards
+                para suporte à gestão e melhoria contínua dos processos.
+              </p>
+            </div>
+
+            <!-- ITEM 2 -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-title">Academic projects – HIV & TARV</div>
+              <div class="timeline-meta">Universidade · Pesquisa em saúde pública</div>
+              <p class="muted">
+                Modelagem com regressão logística, GEE e GLMM em dados de mulheres grávidas e lactantes em tratamento antirretroviral, focando em supressão viral e adesão terapêutica.
+              </p>
+            </div>
+
+            <!-- ITEM 3 (EXEMPLO – PODES EDITAR/LIMPAR) -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-title">Data Science & BI Training</div>
+              <div class="timeline-meta">Cursos e certificações</div>
+              <p class="muted">
+                Formação contínua em Data Science, Power BI, SQL e boas práticas de análise de dados, com aplicação directa em problemas reais de negócio.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LADO DIREITO – CURSOS / EDUCAÇÃO -->
+      <div>
+        <p class="section-kicker">Formação</p>
+        <h2 class="section-title">Cursos & educação</h2>
+
+        <div class="card">
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-title">Licenciatura em Estatística</div>
+              <div class="timeline-meta">Universidade · UEM</div>
+              <p class="muted">Base sólida em estatística teórica e aplicada, inferência, probabilidade, amostragem, séries temporais e métodos de regressão.</p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-title">Data Science & Power BI</div>
+              <div class="timeline-meta">Formações especializadas</div>
+              <p class="muted">Cursos focados em análise de dados, visualização, engenharia de atributos e construção de modelos preditivos orientados ao negócio.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       PROJECTS
+       - Troca os links e descrições para os teus repositórios reais
+    ========================================================== -->
   <section id="projects">
-    <p class="kicker">Portfólio</p>
-    <h2 class="h2">Projetos em destaque</h2>
-    <div class="grid">
-      <a class="card" href="https://github.com/sansaotembe/sansaotembe/tree/main/projetos/analise_operacional_porto" target="_blank" rel="noopener">
-        <h3>Delays Operacionais no Porto</h3>
-        <p class="muted">Análise de TAT, Delays e produtividade (TPH) com insights accionáveis.</p>
-      </a>
-      <a class="card" href="https://github.com/sansaotembe/sansaotembe/tree/main/projetos/estudo_adesao_tarv" target="_blank" rel="noopener">
-        <h3>Adesão ao TARV e Supressão Viral</h3>
-        <p class="muted">Modelos com regressão, GEE e GLMM em contexto clínico.</p>
-      </a>
-      <a class="card" href="https://github.com/sansaotembe/sansaotembe/tree/main/projetos/market_basket_analysis" target="_blank" rel="noopener">
-        <h3>Market Basket Analysis</h3>
-        <p class="muted">Regras de associação e comportamento de compra.</p>
-      </a>
+    <div class="section-inner">
+      <p class="section-kicker">Portfólio</p>
+      <h2 class="section-title">Alguns dos meus projetos</h2>
+
+      <div class="projects-grid">
+
+        <!-- PROJETO 1 -->
+        <a class="card project-card" href="https://github.com/sansaotembe/sansaotembe/tree/main/projetos/analise_operacional_porto" target="_blank" rel="noopener">
+          <div class="project-pill">Port Operations</div>
+          <div class="project-title">Delays & Turnaround Time Analysis</div>
+          <p class="project-desc">
+            Análise de atrasos, TAT e produtividade operacional no porto, identificando gargalos e oportunidades de melhoria com base em dados reais.
+          </p>
+          <div class="project-link">Ver no GitHub →</div>
+        </a>
+
+        <!-- PROJETO 2 -->
+        <a class="card project-card" href="https://github.com/sansaotembe/sansaotembe/tree/main/projetos/estudo_adesao_tarv" target="_blank" rel="noopener">
+          <div class="project-pill">Health · Statistics</div>
+          <div class="project-title">Adherence to ART & Viral Suppression</div>
+          <p class="project-desc">
+            Modelos de regressão, GEE e GLMM aplicados ao estudo da supressão viral em mulheres grávidas e lactantes em TARV.
+          </p>
+          <div class="project-link">Ver no GitHub →</div>
+        </a>
+
+        <!-- PROJETO 3 -->
+        <a class="card project-card" href="https://github.com/sansaotembe/sansaotembe/tree/main/projetos/market_basket_analysis" target="_blank" rel="noopener">
+          <div class="project-pill">Data Mining</div>
+          <div class="project-title">Market Basket Analysis</div>
+          <p class="project-desc">
+            Descoberta de regras de associação e padrões de compra, explorando comportamento de clientes e combinação de produtos.
+          </p>
+          <div class="project-link">Ver no GitHub →</div>
+        </a>
+
+      </div>
     </div>
   </section>
 
-  <!-- CONTACTO -->
+  <!-- =========================================================
+       CONTACTO
+       - Ajusta email, LinkedIn e qualquer outro canal
+    ========================================================== -->
   <section id="contact">
-    <p class="kicker">Contacto</p>
-    <h2 class="h2">Vamos conversar</h2>
-    <div class="card">
-      <p>📫 <a href="https://linkedin.com/in/sansaotembe" target="_blank" rel="noopener">LinkedIn</a><br>
-         ✉️ <a href="mailto:sansaotembe@gmail.com">sansaotembe@gmail.com</a></p>
+    <div class="section-inner">
+      <p class="section-kicker">Contacto</p>
+      <h2 class="section-title">Vamos falar sobre dados?</h2>
+
+      <div class="card contact-row">
+        <div class="contact-item">
+          <span class="contact-label">LinkedIn</span>
+          <a href="https://linkedin.com/in/sansaotembe" target="_blank" rel="noopener">
+            linkedin.com/in/sansaotembe
+          </a>
+        </div>
+
+        <div class="contact-item">
+          <span class="contact-label">E-mail</span>
+          <a href="mailto:sansaotembe@gmail.com">sansaotembe@gmail.com</a>
+        </div>
+
+        <!-- PODES ADICIONAR MAIS CONTACTOS AQUI (ex.: GitHub, telefone profissional, etc.) -->
+      </div>
     </div>
   </section>
 
+  <!-- =========================================================
+       FOOTER
+    ========================================================== -->
   <footer>
-    © <span id="y"></span> Sansão Tembe · Portfólio
+    © <span id="year"></span> Sansão Tembe · Portfolio.  
+    Built with GitHub Pages.
   </footer>
 
+  <!-- SCRIPT PEQUENO PARA NAV MOBILE E ANO AUTOMÁTICO -->
   <script>
-    // ano no rodapé e rolagem suave
-    document.getElementById('y').textContent = new Date().getFullYear();
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
-        const id = a.getAttribute('href').slice(1);
-        const el = document.getElementById(id);
-        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); }
-      });
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const burger = document.getElementById("burger");
+    const navLinks = document.getElementById("nav-links");
+
+    burger.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
     });
   </script>
 </body>
